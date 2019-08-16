@@ -27,9 +27,45 @@ class Home extends StatelessWidget {
 						children: <Widget>[
 							...transactions.map((transaction) {
 								return Card(
-									child: Container(
-										child: Text(transaction.title),
-										width: 100,
+									child: Row(
+										children: <Widget>[
+											Container(
+												child: Text(
+													transaction.amount.toString(),
+													style: TextStyle(
+														color: Colors.purple,
+														fontSize: 20,
+														fontWeight: FontWeight.bold,
+													),
+												),
+												decoration: BoxDecoration(
+													border: Border.all(
+														color: Colors.purple,
+														width: 2,
+													),
+												),
+												margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+												padding: EdgeInsets.all(10),
+											),
+											Column(
+												children: <Widget>[
+													Text(
+														transaction.title,
+														style: TextStyle(
+															fontSize: 18,
+															fontWeight: FontWeight.bold,
+														),
+													),
+													Text(
+														transaction.date.toString(),
+														style: TextStyle(
+															color: Colors.grey,
+														),
+													),
+												],
+												crossAxisAlignment: CrossAxisAlignment.start,
+											),
+										],
 									),
 								);
 							}).toList()
