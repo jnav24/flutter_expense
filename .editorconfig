@@ -1,0 +1,6 @@
+# Editor configuration, see http://editorconfig.org
+root = true
+
+[*.dart]
+indent_style = tab
+indent_size = 4
