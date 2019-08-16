@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './transaction-form.dart';
-import './transaction-list.dart';
+import './transactions.dart';
 
 class Home extends StatelessWidget {
 	@override
@@ -19,8 +18,7 @@ class Home extends StatelessWidget {
 						),
 						elevation: 5,
 					),
-					TransactionForm(),
-					TransactionList(),
+					Transactions(),
 				],
 				crossAxisAlignment: CrossAxisAlignment.stretch,
 				mainAxisAlignment: MainAxisAlignment.start,
