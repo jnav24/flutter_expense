@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import './transaction.dart';
+import 'package:flutter_expense/models/transaction.dart';
 
 class Home extends StatelessWidget {
 	@override
