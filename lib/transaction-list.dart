@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_expense/models/transaction.dart';
 
-class TransactionList extends StatefulWidget {
-	@override
-	createState() => _TransactionListState();
-}
-
-class _TransactionListState extends State<TransactionList> {
+class TransactionList extends StatelessWidget {
 	final List<Transaction> transactions = [
 		Transaction(id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
 		Transaction(id: 't2', title: 'Groceries', amount: 54.99, date: DateTime.now()),
