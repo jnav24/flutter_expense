@@ -9,8 +9,8 @@ class Home extends StatelessWidget {
 			Transaction(id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
 			Transaction(id: 't2', title: 'Groceries', amount: 54.99, date: DateTime.now()),
 		];
-		String titleInput;
-		String amountInput;
+		final titleController = TextEditingController();
+		final amountController = TextEditingController();
 
 		return Scaffold(
 			appBar: AppBar(
@@ -31,18 +31,18 @@ class Home extends StatelessWidget {
 							child: Column(
 								children: <Widget>[
 									TextField(
+										controller: titleController,
 										decoration: InputDecoration(
 											hintText: 'Enter the title of the transaction',
 											labelText: 'Title',
 										),
-										onChanged: (String value) => titleInput = value,
 									),
 									TextField(
+										controller: amountController,
 										decoration: InputDecoration(
 											hintText: 'Enter the amount for the transaction',
 											labelText: 'Amount',
 										),
-										onChanged: (String value) => amountInput = value,
 									),
 									FlatButton(
 										child: Text('Add Transaction'),
