@@ -24,6 +24,34 @@ class Home extends StatelessWidget {
 						),
 						elevation: 5,
 					),
+					Card(
+						child: Container(
+							child: Column(
+								children: <Widget>[
+									TextField(
+										decoration: InputDecoration(
+											labelText: 'Title',
+											hintText: 'Enter the title of the transaction',
+										),
+									),
+									TextField(
+										decoration: InputDecoration(
+											labelText: 'Amount',
+											hintText: 'Enter the amount for the transaction'
+										),
+									),
+									FlatButton(
+										child: Text('Add Transaction'),
+										textColor: Colors.purple,
+										onPressed: () {},
+									),
+								],
+								crossAxisAlignment: CrossAxisAlignment.end,
+							),
+							padding: EdgeInsets.all(10),
+						),
+						elevation: 5,
+					),
 					Column(
 						children: <Widget>[
 							...transactions.map((transaction) {
@@ -73,8 +101,8 @@ class Home extends StatelessWidget {
 						],
 					)
 				],
-				crossAxisAlignment: CrossAxisAlignment.center,
-				mainAxisAlignment: MainAxisAlignment.center,
+				crossAxisAlignment: CrossAxisAlignment.stretch,
+				mainAxisAlignment: MainAxisAlignment.start,
 			),
 		);
 	}
