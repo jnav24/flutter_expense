@@ -8,20 +8,22 @@ class Home extends StatelessWidget {
 			appBar: AppBar(
 				title: Text('Expense Tracker'),
 			),
-			body: Column(
-				children: <Widget>[
-					Card(
-						child: Container(
-							child: Text('Chart'),
-							margin: EdgeInsets.all(10),
-							width: MediaQuery.of(context).size.width / 1.25,
+			body: SingleChildScrollView(
+				child: Column(
+					children: <Widget>[
+						Card(
+							child: Container(
+								child: Text('Chart'),
+								margin: EdgeInsets.all(10),
+								width: MediaQuery.of(context).size.width / 1.25,
+							),
+							elevation: 5,
 						),
-						elevation: 5,
-					),
-					Transactions(),
-				],
-				crossAxisAlignment: CrossAxisAlignment.stretch,
-				mainAxisAlignment: MainAxisAlignment.start,
+						Transactions(),
+					],
+					crossAxisAlignment: CrossAxisAlignment.stretch,
+					mainAxisAlignment: MainAxisAlignment.start,
+				),
 			),
 		);
 	}
