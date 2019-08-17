@@ -3,10 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:flutter_expense/models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
-	final List<Transaction> transactions = [
-		Transaction(id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-		Transaction(id: 't2', title: 'Groceries', amount: 54.99, date: DateTime.now()),
-	];
+	final List<Transaction> transactions;
+
+	TransactionList(this.transactions);
 
 	Widget _getTransactionPrice(Transaction transaction) {
 		return Container(
