@@ -19,6 +19,9 @@ class _TransactionsState extends State<Transactions> {
 		this._transactionList = [
 			Transaction(id: this.uuid.v4(), title: 'New Shoes', amount: 69.99, date: DateTime.now()),
 			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
+			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
+			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
+			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
 		];
 	}
 

@@ -51,19 +51,22 @@ class TransactionList extends StatelessWidget {
 
 	@override
 	Widget build(BuildContext context) {
-		return Column(
-			children: <Widget>[
-				...this.transactions.map((transaction) {
-					return Card(
-						child: Row(
-							children: <Widget>[
-								this._getTransactionPrice(transaction),
-								this._getTransactionDetails(transaction),
-							],
-						),
-					);
-				}).toList()
-			],
+		return Container(
+			height: 300,
+			child: ListView(
+				children: <Widget>[
+					...this.transactions.map((transaction) {
+						return Card(
+							child: Row(
+								children: <Widget>[
+									this._getTransactionPrice(transaction),
+									this._getTransactionDetails(transaction),
+								],
+							),
+						);
+					}).toList()
+				],
+			),
 		);
 	}
 }
