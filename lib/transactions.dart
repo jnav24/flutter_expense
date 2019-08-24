@@ -11,6 +11,8 @@ class Transactions extends StatefulWidget {
 
 class _TransactionsState extends State<Transactions> {
 	final uuid = new Uuid();
+	String title = '';
+	double amount = 0.00;
 	List<Transaction> _transactionList;
 
 	@override
@@ -19,31 +21,29 @@ class _TransactionsState extends State<Transactions> {
 		this._transactionList = [
 			Transaction(id: this.uuid.v4(), title: 'New Shoes', amount: 69.99, date: DateTime.now()),
 			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
-			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
-			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
-			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
 		];
 	}
 
 	void _addNewTransaction(String title, double amount) {
-		print(title);
-		final newTransaction = Transaction(
-			id: this.uuid.v4(),
-			title: title,
-			amount: amount,
-			date: DateTime.now(),
-		);
-
-		this.setState(() {
-			this._transactionList.add(newTransaction);
-		});
+		this.title = title;
+		this.amount = amount;
+//		final newTransaction = Transaction(
+//			id: this.uuid.v4(),
+//			title: title,
+//			amount: amount,
+//			date: DateTime.now(),
+//		);
+//
+//		this.setState(() {
+//			this._transactionList.add(newTransaction);
+//		});
 	}
 
 	@override
 	Widget build(BuildContext context) {
 		return Column(
 			children: <Widget>[
-				TransactionForm(this._addNewTransaction),
+				TransactionForm(this._addNewTransaction, this.title, this.amount),
 				TransactionList(this._transactionList),
 			],
 		);

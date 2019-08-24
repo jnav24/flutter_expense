@@ -2,14 +2,31 @@ import 'package:flutter/material.dart';
 
 class TransactionForm extends StatelessWidget {
 	final Function _addNewTransaction;
+	final titleController = TextEditingController();
+	final amountController = TextEditingController();
 
-	TransactionForm(this._addNewTransaction);
+	TransactionForm(this._addNewTransaction, String title, double amount) {
+		this.titleController.text = title;
+		this.amountController.text = amount.toString();
+	}
+
+	void submitData() {
+		final enteredText = this.titleController.text;
+		double enteredAmount;
+
+		if (this.amountController.text.isEmpty) {
+			enteredAmount = 0.00;
+		} else {
+			enteredAmount = double.parse(this.amountController.text);
+		}
+
+		if (enteredText.isNotEmpty || enteredAmount > 0) {
+			this._addNewTransaction(enteredText, enteredAmount);
+		}
+	}
 
 	@override
 	Widget build(BuildContext context) {
-		final titleController = TextEditingController();
-		final amountController = TextEditingController();
-
 		return Card(
 			child: Container(
 				child: Column(
@@ -20,18 +37,21 @@ class TransactionForm extends StatelessWidget {
 								hintText: 'Enter the title of the transaction',
 								labelText: 'Title',
 							),
+//							onSubmitted: (_) => this.submitData(),
 						),
 						TextField(
-							controller: amountController,
+							controller: this.amountController,
 							decoration: InputDecoration(
 								hintText: 'Enter the amount for the transaction',
 								labelText: 'Amount',
 							),
+							keyboardType: TextInputType.number,
+//							onSubmitted: (_) => this.submitData(),
 						),
 						FlatButton(
 							child: Text('Add Transaction'),
 							textColor: Colors.purple,
-							onPressed: () => this._addNewTransaction(titleController.text, double.parse(amountController.text)),
+							onPressed: this.submitData,
 						),
 					],
 					crossAxisAlignment: CrossAxisAlignment.end,
