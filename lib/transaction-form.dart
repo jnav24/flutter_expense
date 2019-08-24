@@ -24,6 +24,8 @@ class _TransactionFormState extends State<TransactionForm> {
 		}
 
 		widget._addNewTransaction(enteredText, enteredAmount);
+		this.titleController.clear();
+		this.amountController.clear();
 	}
 
 	@override
@@ -50,7 +52,10 @@ class _TransactionFormState extends State<TransactionForm> {
 						FlatButton(
 							child: Text('Add Transaction'),
 							textColor: Colors.purple,
-							onPressed: this.submitData,
+							onPressed: () {
+								this.submitData();
+								FocusScope.of(context).requestFocus(new FocusNode());
+							},
 						),
 					],
 					crossAxisAlignment: CrossAxisAlignment.end,
