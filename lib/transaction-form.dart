@@ -23,9 +23,12 @@ class _TransactionFormState extends State<TransactionForm> {
 			enteredAmount = double.parse(this.amountController.text).toStringAsFixed(2);
 		}
 
-		widget._addNewTransaction(enteredText, enteredAmount);
-		this.titleController.clear();
-		this.amountController.clear();
+		Map<dynamic, dynamic> res = widget._addNewTransaction(enteredText, enteredAmount);
+
+		if (res['success']) {
+			this.titleController.clear();
+			this.amountController.clear();
+		}
 	}
 
 	@override
@@ -40,6 +43,7 @@ class _TransactionFormState extends State<TransactionForm> {
 								hintText: 'Enter the title of the transaction',
 								labelText: 'Title',
 							),
+							onSubmitted: (_) => this.submitData(),
 						),
 						TextField(
 							controller: this.amountController,
@@ -48,6 +52,7 @@ class _TransactionFormState extends State<TransactionForm> {
 								labelText: 'Amount',
 							),
 							keyboardType: TextInputType.number,
+							onSubmitted: (_) => this.submitData(),
 						),
 						FlatButton(
 							child: Text('Add Transaction'),

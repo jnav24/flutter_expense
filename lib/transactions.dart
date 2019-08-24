@@ -22,7 +22,11 @@ class _TransactionsState extends State<Transactions> {
 		];
 	}
 
-	void _addNewTransaction(String title, String amount) {
+	Map<dynamic, dynamic> _addNewTransaction(String title, String amount) {
+		Map result = {
+			'success': false
+		};
+
 		if (title.isNotEmpty && num.parse(amount) > 0) {
 			final newTransaction = Transaction(
 				id: this.uuid.v4(),
@@ -34,7 +38,11 @@ class _TransactionsState extends State<Transactions> {
 			this.setState(() {
 				this._transactionList.add(newTransaction);
 			});
+
+			result['success'] = true;
 		}
+
+		return result;
 	}
 
 	@override
