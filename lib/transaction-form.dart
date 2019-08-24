@@ -15,15 +15,15 @@ class _TransactionFormState extends State<TransactionForm> {
 
 	void submitData() {
 		final enteredText = this.titleController.text;
-		double enteredAmount;
+		String enteredAmount;
 
 		if (this.amountController.text.isEmpty) {
-			enteredAmount = 0.00;
+			enteredAmount = '0.00';
 		} else {
-			enteredAmount = double.parse(this.amountController.text);
+			enteredAmount = double.parse(this.amountController.text).toStringAsFixed(2);
 		}
 
-		if (enteredText.isNotEmpty || enteredAmount > 0) {
+		if (enteredText.isNotEmpty || num.parse(enteredAmount) > 0) {
 			widget._addNewTransaction(enteredText, enteredAmount);
 		}
 	}

@@ -12,20 +12,20 @@ class Transactions extends StatefulWidget {
 class _TransactionsState extends State<Transactions> {
 	final uuid = new Uuid();
 	String title = '';
-	double amount = 0;
+	String amount = '0.00';
 	List<Transaction> _transactionList;
 
 	@override
 	void initState() {
 		super.initState();
 		this._transactionList = [
-			Transaction(id: this.uuid.v4(), title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: 54.99, date: DateTime.now()),
+			Transaction(id: this.uuid.v4(), title: 'New Shoes', amount: '69.99', date: DateTime.now()),
+			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: '54.99', date: DateTime.now()),
 		];
 	}
 
-	void _addNewTransaction(String title, double amount) {
-		if (title.isNotEmpty && amount > 0) {
+	void _addNewTransaction(String title, String amount) {
+		if (title.isNotEmpty && num.parse(amount) > 0) {
 			final newTransaction = Transaction(
 				id: this.uuid.v4(),
 				title: title,
