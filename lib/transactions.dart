@@ -11,8 +11,6 @@ class Transactions extends StatefulWidget {
 
 class _TransactionsState extends State<Transactions> {
 	final uuid = new Uuid();
-	String title = '';
-	String amount = '0.00';
 	List<Transaction> _transactionList;
 
 	@override

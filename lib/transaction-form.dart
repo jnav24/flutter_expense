@@ -23,9 +23,7 @@ class _TransactionFormState extends State<TransactionForm> {
 			enteredAmount = double.parse(this.amountController.text).toStringAsFixed(2);
 		}
 
-		if (enteredText.isNotEmpty || num.parse(enteredAmount) > 0) {
-			widget._addNewTransaction(enteredText, enteredAmount);
-		}
+		widget._addNewTransaction(enteredText, enteredAmount);
 	}
 
 	@override
