@@ -1,18 +1,40 @@
 import 'package:flutter/material.dart';
 
-class TransactionForm extends StatelessWidget {
+class TransactionForm extends StatefulWidget {
 	final Function _addNewTransaction;
+
+	TransactionForm(this._addNewTransaction);
+
+	@override
+	_TransactionFormState createState() => _TransactionFormState();
+}
+
+class _TransactionFormState extends State<TransactionForm> {
+//	Function _addNewTransaction;
 	final titleController = TextEditingController();
 	final amountController = TextEditingController();
+//	String title;
 
-	TransactionForm(this._addNewTransaction, String title, double amount) {
-		this.titleController.text = title;
-		this.amountController.text = amount.toString();
-	}
+//	TransactionForm(Function _addNewTransaction) {
+//		print('transaction-form:9');
+//		print(title);
+//
+//		this._addNewTransaction = _addNewTransaction;
+//		if (title.isNotEmpty) {
+//			this.titleController.text = title;
+//		}
+
+//		if (amount > 0) {
+//			this.amountController.text = amount.toString();
+//		}
+//	}
 
 	void submitData() {
 		final enteredText = this.titleController.text;
 		double enteredAmount;
+
+		print('transaction-form:24');
+		print(enteredText);
 
 		if (this.amountController.text.isEmpty) {
 			enteredAmount = 0.00;
@@ -20,8 +42,10 @@ class TransactionForm extends StatelessWidget {
 			enteredAmount = double.parse(this.amountController.text);
 		}
 
+//		this.titleController.clear();
 		if (enteredText.isNotEmpty || enteredAmount > 0) {
-			this._addNewTransaction(enteredText, enteredAmount);
+//			this._addNewTransaction(enteredText, enteredAmount);
+			widget._addNewTransaction(enteredText, enteredAmount);
 		}
 	}
 
@@ -38,6 +62,13 @@ class TransactionForm extends StatelessWidget {
 								labelText: 'Title',
 							),
 //							onSubmitted: (_) => this.submitData(),
+//							onChanged: (String e) {
+//								print('changed');
+//								print(e);
+//								setState(() {
+//									this.title = e;
+//								});
+//							},
 						),
 						TextField(
 							controller: this.amountController,
