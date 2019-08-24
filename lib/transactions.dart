@@ -25,25 +25,18 @@ class _TransactionsState extends State<Transactions> {
 	}
 
 	void _addNewTransaction(String title, double amount) {
-		print('add new transaction');
-//		this.setState(() {
-//			this.title = title;
-//			this.amount = amount;
-//		});
+		if (title.isNotEmpty && amount > 0) {
+			final newTransaction = Transaction(
+				id: this.uuid.v4(),
+				title: title,
+				amount: amount,
+				date: DateTime.now(),
+			);
 
-//		if (this.title.isNotEmpty && this.amount > 0) {
-//			print('add transaction');
-//			final newTransaction = Transaction(
-//				id: this.uuid.v4(),
-//				title: this.title,
-//				amount: this.amount,
-//				date: DateTime.now(),
-//			);
-//
-//			this.setState(() {
-//				this._transactionList.add(newTransaction);
-//			});
-//		}
+			this.setState(() {
+				this._transactionList.add(newTransaction);
+			});
+		}
 	}
 
 	@override
