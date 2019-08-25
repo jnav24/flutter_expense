@@ -91,7 +91,6 @@ class _HomeState extends State<Home> {
 							),
 							elevation: 5,
 						),
-						TransactionForm(this._addNewTransaction),
 						TransactionList(this._transactionList),
 					],
 					crossAxisAlignment: CrossAxisAlignment.stretch,
