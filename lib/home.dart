@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import './transactions.dart';
+import './transaction-form.dart';
+import './transaction-list.dart';
+import 'package:uuid/uuid.dart';
+import './models/transaction.dart';
 
 class Home extends StatefulWidget {
 	@override
@@ -7,13 +10,48 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+	final uuid = new Uuid();
+	List<Transaction> _transactionList;
+
+	@override
+	void initState() {
+		super.initState();
+		this._transactionList = [
+			Transaction(id: this.uuid.v4(), title: 'New Shoes', amount: '69.99', date: DateTime.now()),
+			Transaction(id: this.uuid.v4(), title: 'Groceries', amount: '54.99', date: DateTime.now()),
+		];
+	}
+
+	Map<dynamic, dynamic> _addNewTransaction(String title, String amount) {
+		Map result = {
+			'success': false
+		};
+
+		if (title.isNotEmpty && num.parse(amount) > 0) {
+			final newTransaction = Transaction(
+				id: this.uuid.v4(),
+				title: title,
+				amount: amount,
+				date: DateTime.now(),
+			);
+
+			this.setState(() {
+				this._transactionList.add(newTransaction);
+			});
+
+			result['success'] = true;
+		}
+
+		return result;
+	}
+
 	void _startAddNewTransaction(BuildContext ctx) {
 		showModalBottomSheet(
 			context: ctx,
 			builder: (_) {
 				return GestureDetector(
 					behavior: HitTestBehavior.opaque,
-					child: Text('Hello'),
+					child: TransactionForm(this._addNewTransaction),
 					onTap: () {},
 				);
 			}
@@ -45,7 +83,8 @@ class _HomeState extends State<Home> {
 							),
 							elevation: 5,
 						),
-						Transactions(),
+						TransactionForm(this._addNewTransaction),
+						TransactionList(this._transactionList),
 					],
 					crossAxisAlignment: CrossAxisAlignment.stretch,
 					mainAxisAlignment: MainAxisAlignment.start,
