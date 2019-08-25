@@ -4,6 +4,7 @@ import 'package:flutter_expense/models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
 	final List<Transaction> transactions;
+	var context;
 
 	TransactionList(this.transactions);
 
@@ -12,14 +13,14 @@ class TransactionList extends StatelessWidget {
 			child: Text(
 				'\$${transaction.amount}',
 				style: TextStyle(
-					color: Colors.purple,
+					color: Theme.of(this.context).primaryColor,
 					fontSize: 20,
 					fontWeight: FontWeight.bold,
 				),
 			),
 			decoration: BoxDecoration(
 				border: Border.all(
-					color: Colors.purple,
+					color: Theme.of(this.context).primaryColor,
 					width: 2,
 				),
 			),
@@ -51,6 +52,7 @@ class TransactionList extends StatelessWidget {
 
 	@override
 	Widget build(BuildContext context) {
+		this.context = context;
 		return Container(
 			height: 300,
 			child: ListView.builder(
