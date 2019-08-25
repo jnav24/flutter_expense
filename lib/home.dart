@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import './transactions.dart';
 
 class Home extends StatelessWidget {
+	void startAddNewTransaction(BuildContext ctx) {
+		showModalBottomSheet(
+			context: ctx,
+			builder: (_) {
+				return GestureDetector(
+					behavior: HitTestBehavior.opaque,
+					child: Text('Hello'),
+					onTap: () {},
+				);
+			}
+		);
+	}
+
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
@@ -10,7 +23,9 @@ class Home extends StatelessWidget {
 				actions: <Widget>[
 					IconButton(
 						icon: Icon(Icons.add),
-						onPressed: () {},
+						onPressed: () {
+							this.startAddNewTransaction(context);
+						},
 					),
 				],
 			),
@@ -34,7 +49,9 @@ class Home extends StatelessWidget {
 			floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 			floatingActionButton: FloatingActionButton(
 				child: Icon(Icons.add),
-				onPressed: () {},
+				onPressed: () {
+					this.startAddNewTransaction(context);
+				},
 			),
 		);
 	}
