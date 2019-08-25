@@ -40,10 +40,17 @@ class _HomeState extends State<Home> {
 			});
 
 			result['success'] = true;
-			Navigator.of(context).pop();
 		}
 
 		return result;
+	}
+
+	void _addNewTransactionModal(String title, String amount) {
+		final res = this._addNewTransaction(title, amount);
+
+		if (res['success']) {
+			Navigator.of(context).pop();
+		}
 	}
 
 	void _startAddNewTransaction(BuildContext ctx) {
@@ -52,7 +59,7 @@ class _HomeState extends State<Home> {
 			builder: (_) {
 				return GestureDetector(
 					behavior: HitTestBehavior.opaque,
-					child: TransactionForm(this._addNewTransaction),
+					child: TransactionForm(this._addNewTransactionModal),
 					onTap: () {},
 				);
 			}
