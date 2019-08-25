@@ -40,6 +40,7 @@ class _HomeState extends State<Home> {
 			});
 
 			result['success'] = true;
+			Navigator.of(context).pop();
 		}
 
 		return result;
