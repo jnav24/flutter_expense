@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import './transactions.dart';
 
-class Home extends StatelessWidget {
-	void startAddNewTransaction(BuildContext ctx) {
+class Home extends StatefulWidget {
+	@override
+	_HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+	void _startAddNewTransaction(BuildContext ctx) {
 		showModalBottomSheet(
 			context: ctx,
 			builder: (_) {
@@ -24,7 +29,7 @@ class Home extends StatelessWidget {
 					IconButton(
 						icon: Icon(Icons.add),
 						onPressed: () {
-							this.startAddNewTransaction(context);
+							this._startAddNewTransaction(context);
 						},
 					),
 				],
@@ -50,7 +55,7 @@ class Home extends StatelessWidget {
 			floatingActionButton: FloatingActionButton(
 				child: Icon(Icons.add),
 				onPressed: () {
-					this.startAddNewTransaction(context);
+					this._startAddNewTransaction(context);
 				},
 			),
 		);
